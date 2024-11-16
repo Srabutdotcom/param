@@ -7,7 +7,7 @@
   },
   "lint": {
     "include": ["src/"],
-    "exclude": ["dist/"],
+    "exclude": ["dist/", "src/encryptedexts.js"],
     "rules": {
       "exclude": ["no-var", "no-explicit-any", "no-slow-types"]
     }
