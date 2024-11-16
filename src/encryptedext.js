@@ -1,5 +1,5 @@
 //@ts-self-types="../type/encryptedext.d.ts
-import { Uint16, Extension, Constrained } from "./dep.js";
+import { Uint16, Extension, Constrained } from "./dep.ts";
 
 /**
  * https://datatracker.ietf.org/doc/html/rfc8446#section-4.3.1

@@ -1,4 +1,4 @@
-import { Constrained, Extension } from "../src/dep.js";
+import { Constrained, Extension } from "../src/dep.ts";
 /**
  * Represents the EncryptedExtensions in a TLS handshake, as described in 
  * [RFC 8446 Section 4.3.1](https://datatracker.ietf.org/doc/html/rfc8446#section-4.3.1).
