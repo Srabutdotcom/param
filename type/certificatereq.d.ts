@@ -1,4 +1,4 @@
-import { Constrained, Extension, Struct } from "../src/dep.js";
+import { Constrained, Extension, Struct } from "../src/dep.ts";
 
 /**
  * Represents a collection of TLS extensions.
