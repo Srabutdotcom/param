@@ -1,5 +1,4 @@
-//@ts-self-types="../type/encryptedext.d.ts 
-//
+// @ts-self-types="../type/encryptedext.d.ts 
 import { Uint16, Extension, Constrained } from "./dep.ts";
 
 /**

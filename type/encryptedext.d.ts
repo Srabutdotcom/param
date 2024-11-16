@@ -1,25 +1,30 @@
+// encrypted_extensions.d.ts
+
 import { Constrained, Extension } from "../src/dep.ts";
+
 /**
- * Represents the EncryptedExtensions in a TLS handshake, as described in 
- * [RFC 8446 Section 4.3.1](https://datatracker.ietf.org/doc/html/rfc8446#section-4.3.1).
- * 
- * EncryptedExtensions is used to carry extensions from the server in a secure context.
+ * Represents the EncryptedExtensions structure as defined in RFC 8446, Section 4.3.1.
+ * Contains a set of extensions used during the TLS handshake.
+ * @see https://datatracker.ietf.org/doc/html/rfc8446#section-4.3.1
  */
 export class EncryptedExtensions extends Constrained {
-   /**
-    * Creates a new instance of `EncryptedExtensions` from an array of bytes.
-    * 
-    * @param array - A `Uint8Array` containing the serialized representation of the extensions.
-    * @returns A new `EncryptedExtensions` instance with parsed extensions.
-    * @throws {Error} If parsing fails due to invalid structure or data.
-    */
-   static from(array: Uint8Array): EncryptedExtensions;
- 
-   /**
-    * Constructs a new `EncryptedExtensions` instance.
-    * 
-    * @param extension - A variable number of extensions to be included in the encrypted extensions.
-    */
-   constructor(...extension: Extension[]);
- }
- 
+  /**
+   * Creates an `EncryptedExtensions` instance from a list of extensions.
+   * @param {...Extension} extensions - List of extensions.
+   * @returns {EncryptedExtensions} - The constructed EncryptedExtensions instance.
+   */
+  static fromExtensions(...extensions: Extension[]): EncryptedExtensions;
+
+  /**
+   * Creates an `EncryptedExtensions` instance from a Uint8Array.
+   * @param {Uint8Array} array - The array to parse.
+   * @returns {EncryptedExtensions} - Parsed EncryptedExtensions instance.
+   */
+  static from(array: Uint8Array): EncryptedExtensions;
+
+  /**
+   * Constructs a new `EncryptedExtensions` instance.
+   * @param {...Extension} extension - List of extensions.
+   */
+  constructor(...extension: Extension[]);
+}
