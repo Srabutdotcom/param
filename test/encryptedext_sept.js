@@ -1,5 +1,5 @@
 import { ExtensionType } from "jsr:@tls/enum";
-import { EncryptedExtensions } from "../src/encryptedext.js";
+import { EncryptedExtensions } from "../src/encryptedexts.js";
 import { assertEquals } from "jsr:@std/assert";
 
 Deno.test("EncryptedExtension", ()=>{

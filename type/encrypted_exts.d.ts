@@ -1,6 +1,6 @@
-// encrypted_extensions.d.ts
+// encrypted_exts.d.ts
 
-import { Constrained, Extension } from "../src/dep.js";
+import { Constrained, Extension } from "./dep.d.ts";
 
 /**
  * Represents the EncryptedExtensions structure as defined in RFC 8446, Section 4.3.1.
