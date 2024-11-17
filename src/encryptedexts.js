@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-slow-types
 // @ts-self-types="../type/encrypted_exts.d.ts 
 // @ts-check
 import { Uint16, Extension, Constrained } from "./dep.ts";

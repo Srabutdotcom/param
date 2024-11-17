@@ -26,12 +26,13 @@ const encryptedExts = EncryptedExtensions.fromExtensions(...extensions);
 
 ## Completed Work
 
-- Implemented `CertificateRequest` and `EncryptedExtensions` with full compliance to RFC 8446.
+- [x] 4.3.1.  Encrypted Extensions
+- [x] 4.3.2.  Certificate Request
 
 
 ## Pending Work
 
-None. The implementation fully satisfies RFC 8446 Section 4.3 requirements.
+- [x] None. The implementation fully satisfies RFC 8446 Section 4.3 requirements.
 
 ## References
 
