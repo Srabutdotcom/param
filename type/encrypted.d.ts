@@ -1,4 +1,4 @@
-// encrypted_exts.d.ts
+// encrypted.d.ts
 
 import { Constrained, Extension, Uint16 } from "../src/dep.ts";
 
