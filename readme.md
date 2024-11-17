@@ -32,7 +32,7 @@ const encryptedExts = EncryptedExtensions.fromExtensions(...extensions);
 
 ## Pending Work
 
-- [x] None. The implementation fully satisfies RFC 8446 Section 4.3 requirements.
+- [ ] None. The implementation fully satisfies RFC 8446 Section 4.3 requirements.
 
 ## References
 
