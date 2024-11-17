@@ -1,2 +1,2 @@
 export * from "./certificatereq.js"
-export * from "./encryptedexts.js"
+export * from "./encrypted.js"
