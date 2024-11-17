@@ -1,6 +1,6 @@
 {
   "name": "@tls/param",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "exports": "./src/mod.ts",
   "publish": {
     "exclude": ["dist/"]
@@ -9,7 +9,7 @@
     "include": ["src/"],
     "exclude": ["dist/", "src/encryptedexts.js"],
     "rules": {
-      "exclude": ["no-var", "no-explicit-any", "no-slow-types"]
+      "exclude": []
     }
   },
   "imports": {
