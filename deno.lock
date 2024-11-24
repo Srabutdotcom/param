@@ -1,31 +1,16 @@
 {
   "version": "4",
   "specifiers": {
+    "jsr:@std/assert@*": "1.0.8",
     "jsr:@std/assert@^1.0.2": "1.0.8",
     "jsr:@std/internal@^1.0.5": "1.0.5",
-    "jsr:@tls/enum@~0.1.6": "0.1.9",
-    "jsr:@tls/enum@~0.1.9": "0.1.9",
-    "jsr:@tls/enum@~0.2.2": "0.2.4",
-    "jsr:@tls/enum@~0.2.3": "0.2.3",
-    "jsr:@tls/enum@~0.2.4": "0.2.4",
-    "jsr:@tls/extension@0.1": "0.1.2",
-    "jsr:@tls/extension@0.2": "0.2.0",
-    "jsr:@tls/extension@~0.1.1": "0.1.1",
-    "jsr:@tls/extension@~0.1.2": "0.1.9",
-    "jsr:@tls/extension@~0.1.3": "0.1.3",
-    "jsr:@tls/extension@~0.1.4": "0.1.4",
-    "jsr:@tls/extension@~0.1.6": "0.1.6",
-    "jsr:@tls/extension@~0.1.7": "0.1.7",
-    "jsr:@tls/extension@~0.1.8": "0.1.8",
-    "jsr:@tls/extension@~0.1.9": "0.1.9",
-    "jsr:@tls/struct@0.3": "0.3.0",
-    "jsr:@tls/struct@~0.2.2": "0.2.6",
+    "jsr:@tls/enum@*": "0.1.0",
+    "jsr:@tls/enum@0.1": "0.1.0",
+    "jsr:@tls/enum@^0.0.7": "0.0.7",
+    "jsr:@tls/extension@^0.0.6": "0.0.6",
+    "jsr:@tls/extension@^0.0.7": "0.0.7",
+    "jsr:@tls/struct@~0.2.2": "0.2.3",
     "jsr:@tls/struct@~0.2.3": "0.2.3",
-    "jsr:@tls/struct@~0.2.4": "0.2.4",
-    "jsr:@tls/struct@~0.2.5": "0.2.5",
-    "jsr:@tls/struct@~0.2.6": "0.2.8",
-    "jsr:@tls/struct@~0.2.7": "0.2.7",
-    "jsr:@tls/struct@~0.2.8": "0.2.8",
     "npm:@noble/curves@1.6.0": "1.6.0"
   },
   "jsr": {
@@ -38,127 +23,33 @@
     "@std/internal@1.0.5": {
       "integrity": "54a546004f769c1ac9e025abd15a76b6671ddc9687e2313b67376125650dc7ba"
     },
-    "@tls/enum@0.1.9": {
-      "integrity": "b24a14b4a0a8297f01e495725467891d3487991af5bcfc580122f564a7c1a09d",
-      "dependencies": [
-        "jsr:@tls/extension@0.1",
-        "jsr:@tls/struct@~0.2.2"
-      ]
+    "@tls/enum@0.0.7": {
+      "integrity": "84d168866e6cd7a874ddcc8b9f96503fdc93fa8962728cc8d34d57f30a6d52a5"
     },
-    "@tls/enum@0.2.2": {
-      "integrity": "f36f49652e0ac2747fde7943afe5f4ba83499a354261736a6e16251d3a241c54",
+    "@tls/enum@0.1.0": {
+      "integrity": "c2661b6538566b749c66f78e5f00f7646ef5d398f22077ce084625c1e6e2f2dd",
       "dependencies": [
-        "jsr:@tls/extension@~0.1.2",
-        "jsr:@tls/struct@~0.2.6",
+        "jsr:@tls/extension@^0.0.6",
+        "jsr:@tls/struct@~0.2.2",
         "npm:@noble/curves"
       ]
     },
-    "@tls/enum@0.2.3": {
-      "integrity": "96882810f4f76ef99960b39ce365ea50ae9b0eef6e11d4087f2a3f1d8e4f45e6",
+    "@tls/extension@0.0.6": {
+      "integrity": "51aed8572e3efbad834130e9f00228702494ce9d6e39d029803e15bf8a54dee2",
       "dependencies": [
-        "jsr:@tls/extension@~0.1.2",
-        "jsr:@tls/struct@~0.2.6",
-        "npm:@noble/curves"
-      ]
-    },
-    "@tls/enum@0.2.4": {
-      "integrity": "84b4578de8ec0bcd8a55c271c15daab060b123954e49434068eafd8b9b18e07a",
-      "dependencies": [
-        "jsr:@tls/extension@~0.1.2",
-        "jsr:@tls/struct@~0.2.6",
-        "npm:@noble/curves"
-      ]
-    },
-    "@tls/extension@0.1.0": {
-      "integrity": "8eeff1e434a40dca64fb663ae0d1977432e1aa28a6baee9f2f75785ccf2c3cdd",
-      "dependencies": [
-        "jsr:@tls/enum@~0.1.6",
+        "jsr:@tls/enum@^0.0.7",
         "jsr:@tls/struct@~0.2.2"
       ]
     },
-    "@tls/extension@0.1.1": {
-      "integrity": "2a87532bf27a6d70835c4f691940f7495c3c2c9c4ac88e29654168503fe52a67",
+    "@tls/extension@0.0.7": {
+      "integrity": "5291a4ca778ac0cecd9b7d25ea98f6be1a68feedf5c90795cec1ec85c7c72c31",
       "dependencies": [
-        "jsr:@tls/enum@~0.1.6",
+        "jsr:@tls/enum@0.1",
         "jsr:@tls/struct@~0.2.2"
-      ]
-    },
-    "@tls/extension@0.1.2": {
-      "integrity": "5018d22341a1b3de30dc702310af1ded5cf3ad6fcd23db07ef8b00477c2a8985",
-      "dependencies": [
-        "jsr:@tls/enum@~0.1.6",
-        "jsr:@tls/struct@~0.2.2"
-      ]
-    },
-    "@tls/extension@0.1.3": {
-      "integrity": "116eda999e5dc67b9d3334f0c5dec1f9c8a8079bfe69704bb9c2f049206a4188",
-      "dependencies": [
-        "jsr:@tls/enum@~0.2.2",
-        "jsr:@tls/struct@~0.2.6"
-      ]
-    },
-    "@tls/extension@0.1.4": {
-      "integrity": "6bb5191099989021ef5286ec305eb0f9551946900931bc02d4a3ebcdcc55bcf8",
-      "dependencies": [
-        "jsr:@tls/enum@~0.2.2",
-        "jsr:@tls/struct@~0.2.6"
-      ]
-    },
-    "@tls/extension@0.1.6": {
-      "integrity": "dafb2630b7f76ba82eef742544481498ff622126084ff42c32b2ba0052fa2541",
-      "dependencies": [
-        "jsr:@tls/enum@~0.2.2",
-        "jsr:@tls/struct@~0.2.6"
-      ]
-    },
-    "@tls/extension@0.1.7": {
-      "integrity": "4965a881fc5336b12c1c51d7a6726b0c5146d56735404506572c4e828ba06ef1",
-      "dependencies": [
-        "jsr:@tls/enum@~0.2.2",
-        "jsr:@tls/struct@~0.2.6"
-      ]
-    },
-    "@tls/extension@0.1.8": {
-      "integrity": "14fd2e883650e73e542e5e0d1656f87f5aec6c4df0269093f475d64f341561b4",
-      "dependencies": [
-        "jsr:@tls/enum@~0.2.2",
-        "jsr:@tls/struct@0.3"
-      ]
-    },
-    "@tls/extension@0.1.9": {
-      "integrity": "915e2f21dd4829c458ee7c7fbc71b0e15afd3a77ff32092a8bc92847c186f2be",
-      "dependencies": [
-        "jsr:@tls/enum@~0.2.2",
-        "jsr:@tls/struct@0.3"
-      ]
-    },
-    "@tls/extension@0.2.0": {
-      "integrity": "6a305a20df150d5ad3699617824d7798b115d09d463ab7e7bd0230d94b3bb01d",
-      "dependencies": [
-        "jsr:@tls/enum@~0.2.2",
-        "jsr:@tls/struct@0.3"
       ]
     },
     "@tls/struct@0.2.3": {
       "integrity": "a2200ed8332f89f4980c39737a7d564fe16ef28850d6d4776556890d83e976a3"
-    },
-    "@tls/struct@0.2.4": {
-      "integrity": "0bcba13a30628161b9ea257f120c9d36d645f8fc0502ed6e8575ca30f5abc2f0"
-    },
-    "@tls/struct@0.2.5": {
-      "integrity": "14e0e68d62e0ae4f32cd27e012c1720725722972763f8081b4fee16c76b5e1a1"
-    },
-    "@tls/struct@0.2.6": {
-      "integrity": "cdeb3182efd8259ad7b41790a943aebdcb78b4650175079fa72caff2fa819406"
-    },
-    "@tls/struct@0.2.7": {
-      "integrity": "e17a2259b9e0af9233f52f259b56a6cacccef8e2c6ca1569b04d936f2dc77741"
-    },
-    "@tls/struct@0.2.8": {
-      "integrity": "6eab275a12228cf8b47a36e78f4f8e7e64fce61abf7b3a2000a4168c95c8e9c3"
-    },
-    "@tls/struct@0.3.0": {
-      "integrity": "9cc2180608542c456b6b784936a4902e723e12a8a68ece263b97a29f2c592cf2"
     }
   },
   "npm": {
@@ -175,9 +66,9 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@^1.0.2",
-      "jsr:@tls/enum@~0.2.4",
-      "jsr:@tls/extension@0.2",
-      "jsr:@tls/struct@0.3"
+      "jsr:@tls/enum@0.1",
+      "jsr:@tls/extension@^0.0.7",
+      "jsr:@tls/struct@~0.2.3"
     ]
   }
 }
