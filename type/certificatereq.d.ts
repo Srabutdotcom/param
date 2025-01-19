@@ -4,7 +4,7 @@ import { Constrained, Extension, Struct } from "../src/dep.ts";
  * Represents a collection of TLS extensions.
  * Enforces constraints on the minimum and maximum length of the extensions.
  */
-export class Extensions extends Constrained {
+declare class Extensions extends Constrained {
   /**
    * Creates an `Extensions` instance from a Uint8Array.
    * @param {Uint8Array} array - The array to parse.
@@ -30,7 +30,7 @@ export class Extensions extends Constrained {
  * Represents the certificate request context in a TLS handshake.
  * Enforces constraints on the minimum and maximum length of the context.
  */
-export class Certificate_request_context extends Constrained {
+declare class Certificate_request_context extends Constrained {
   /**
    * Creates a `Certificate_request_context` instance from a Uint8Array.
    * @param {Uint8Array} array - The array to parse.

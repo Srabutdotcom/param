@@ -28,7 +28,7 @@ export class EncryptedExtensions extends Constrained {
 /**
  * Represents a 16-bit unsigned integer.
  */
-export declare class Uint16 extends Uint8Array {
+declare class Uint16 extends Uint8Array {
   /**
    * Creates a Uint16 instance from a Uint8Array.
    * @param array - The Uint8Array to parse.
@@ -45,7 +45,7 @@ export declare class Uint16 extends Uint8Array {
 /**
  * Represents a single extension.
  */
-export declare class Extension extends Uint8Array {
+declare class Extension extends Uint8Array {
   /**
    * Creates an Extension instance from a Uint8Array.
    * @param array - The Uint8Array to parse.
@@ -62,7 +62,7 @@ export declare class Extension extends Uint8Array {
 /**
  * Represents a constrained data structure with a specified range.
  */
-export declare class Constrained extends Uint8Array {
+declare class Constrained extends Uint8Array {
   /**
    * Constructs a new Constrained instance.
    * @param min - The minimum length.
