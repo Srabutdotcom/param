@@ -4,11 +4,14 @@
     "jsr:@std/assert@*": "1.0.8",
     "jsr:@std/assert@^1.0.2": "1.0.8",
     "jsr:@std/internal@^1.0.5": "1.0.5",
-    "jsr:@tls/enum@~0.6.2": "0.6.5",
+    "jsr:@tls/enum@*": "0.6.6",
+    "jsr:@tls/enum@~0.6.2": "0.6.6",
     "jsr:@tls/enum@~0.6.5": "0.6.5",
+    "jsr:@tls/enum@~0.6.6": "0.6.6",
     "jsr:@tls/extension@~0.2.9": "0.2.9",
     "jsr:@tls/struct@0.3": "0.3.6",
-    "jsr:@tls/struct@~0.3.6": "0.3.6",
+    "jsr:@tls/struct@~0.3.6": "0.3.7",
+    "jsr:@tls/struct@~0.3.7": "0.3.7",
     "npm:@noble/curves@^1.7.0": "1.8.0",
     "npm:@noble/hashes@^1.6.1": "1.7.0",
     "npm:@peculiar/x509@^1.12.3": "1.12.3"
@@ -32,6 +35,15 @@
         "npm:@peculiar/x509"
       ]
     },
+    "@tls/enum@0.6.6": {
+      "integrity": "ac29ed942297f0a616bec0dcf5528b3a270a2dd75aebe3865a25f5a991c7aee5",
+      "dependencies": [
+        "jsr:@tls/struct@~0.3.6",
+        "npm:@noble/curves",
+        "npm:@noble/hashes",
+        "npm:@peculiar/x509"
+      ]
+    },
     "@tls/extension@0.2.9": {
       "integrity": "18499ee4ffcb1d0fe0049f6d2da5d895e84b7249949b0ae6340f8787aabee448",
       "dependencies": [
@@ -44,6 +56,9 @@
     },
     "@tls/struct@0.3.6": {
       "integrity": "1b64d35adc125fda22dbb642aa351894187540f7b7f5a715bf6775d206b50549"
+    },
+    "@tls/struct@0.3.7": {
+      "integrity": "bf01ae85996f214b838dd7e5865840061449eb7069bf8b3b7a3cd6fcd75f6ba4"
     }
   },
   "npm": {
@@ -204,9 +219,9 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@^1.0.2",
-      "jsr:@tls/enum@~0.6.5",
+      "jsr:@tls/enum@~0.6.6",
       "jsr:@tls/extension@~0.2.9",
-      "jsr:@tls/struct@~0.3.6"
+      "jsr:@tls/struct@~0.3.7"
     ]
   }
 }

@@ -1,7 +1,7 @@
 // deno-lint-ignore-file no-slow-types
 // @ts-self-types="../type/encrypted.d.ts" 
 import { ContentType, HandshakeType } from "./dep.ts";
-import { Uint16, Constrained, Uint24 } from "./dep.ts";
+import { Uint16, Constrained, Uint24, parseItems } from "./dep.ts";
 import {
    Extension, ExtensionType,
    NamedGroupList, RecordSizeLimit,
@@ -19,16 +19,19 @@ export class EncryptedExtensions extends Constrained {
    ext = new Set;
    static fromExtensions(...extensions) { return new EncryptedExtensions(...extensions) }
    static fromHandshake(array) {
-      const copy = array.slice();
-      const _type = HandshakeType.from(copy);
-      const _lengthOf = Uint24.from(copy.subarray(1)).value;
+      const copy = Uint8Array.from(array);
+      const type = HandshakeType.from(copy);
+      if (type !== HandshakeType.ENCRYPTED_EXTENSIONS) return TypeError(`Expected EncryptedExtension`)
+      const lengthOf = Uint24.from(copy.subarray(1)).value;
+      if (lengthOf == 2) return new EncryptedExtensions
       return EncryptedExtensions.from(copy.subarray(4))
    }
    static from(array) {
       const copy = Uint8Array.from(array)
-      if (copy.length == 0) return new EncryptedExtensions
-      const extensions = Extensions.from(copy.subarray());
-      return new EncryptedExtensions(...extensions.extensions)
+      const lengthOf = Uint16.from(copy).value;
+      if (lengthOf == 0) return new EncryptedExtensions
+      const extensions = parseItems(copy, 2, lengthOf, Extension);//_Extensions.from(copy.subarray());
+      return new EncryptedExtensions(...extensions)
    }
 
    constructor(...extensions) {
@@ -45,22 +48,22 @@ export class EncryptedExtensions extends Constrained {
    }
 }
 
-class Extensions extends Constrained {
-   static fromExtension(...extensions) { return new Extensions(...extensions) }
+class _Extensions extends Constrained {
+   static fromExtension(...extensions) { return new _Extensions(...extensions) }
    static from(array) {
       const copy = Uint8Array.from(array);
       const _lengthOf = Uint16.from(copy).value;
       const extensions = [];
       let offset = 2;
       //for (let offset = 2; offset < lengthOf + 2;) {
-         //if (offset > copy.length - 2) break;
-      while(true){
+      //if (offset > copy.length - 2) break;
+      while (true) {
          const extension = Extension.from(copy.subarray(offset)); offset += extension.length
          parseExtension(extension);
          extensions.push(extension)
          if (offset >= copy.length - 2) break;
       }
-      return new Extensions(...extensions)
+      return new _Extensions(...extensions)
    }
    constructor(...extensions) {
       super(0, 2 ** 16 - 1, ...extensions)

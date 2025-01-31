@@ -18,5 +18,9 @@ const encryptedExtensionMsg = HexaDecimal.fromString(`08 00 00 28 00 26 00 0a 00
 
 const back = EncryptedExtensions.fromHandshake(encryptedExtensionMsg).handshake;
 
+const test = Uint8Array.of(8,0,0,2,0,0);
+const back_0 = EncryptedExtensions.fromHandshake(test);
+const back_1 = EncryptedExtensions.from(test.subarray(4))
+
 const _n = null; 
 
