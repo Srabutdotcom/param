@@ -1,4 +1,3 @@
-import { ExtensionType } from "jsr:@tls/enum";
 import { HexaDecimal } from "../src/dep.ts";
 import { EncryptedExtensions } from "../src/encrypted.js";
 import { assertEquals } from "jsr:@std/assert";
