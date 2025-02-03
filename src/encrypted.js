@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-slow-types
 // @ts-self-types="../type/encrypted.d.ts" 
-import { ContentType, HandshakeType } from "./dep.ts";
+import { Handshake, HandshakeType } from "./dep.ts";
 import { Uint16, Constrained, Uint24, parseItems } from "./dep.ts";
 import {
    Extension, ExtensionType,
@@ -40,11 +40,11 @@ export class EncryptedExtensions extends Constrained {
    }
 
    get handshake() {
-      return HandshakeType.ENCRYPTED_EXTENSIONS.handshake(this);
+      return new Handshake(HandshakeType.ENCRYPTED_EXTENSIONS, this);
    }
 
    get record() {
-      return ContentType.HANDSHAKE.tlsPlaintext(this.handshake)
+      return this.handshake.record
    }
 }
 
