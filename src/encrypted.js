@@ -1,21 +1,32 @@
 // deno-lint-ignore-file no-slow-types
 // @ts-self-types="../type/encrypted.d.ts" 
-import { Handshake, HandshakeType } from "./dep.ts";
-import { Uint16, Constrained, Uint24, parseItems } from "./dep.ts";
-import {
-   Extension, ExtensionType,
-   NamedGroupList, RecordSizeLimit,
-   KeyShareClientHello, SupportedVersions, ServerNameList, PskKeyExchangeModes,
-   Cookie, Supported_signature_algorithms,
-   OfferedPsks,
-   EarlyDataIndication,
-   Padding,
-} from "./dep.ts"
+import { Uint16, parseItems } from "./dep.ts";
+import { Extension } from "./dep.ts"
+import { parseExtension } from "./utils.js";
+
+export class EncryptedExtensions extends Uint8Array {
+   #extensions
+   static sanitize(array) {
+      const lengthOf = Uint16.from(array).value;
+      if (lengthOf > 65535) throw Error(`Length exceeding max. 65535`)
+      return [array.slice(0, 2 + lengthOf)]
+   }
+   static from(array){ return new EncryptedExtensions(array)}
+   constructor(...args) {
+      args = (args.at(0) instanceof Uint8Array) ? EncryptedExtensions.sanitize(args.at(0)) : args
+      super(...args)
+   }
+   get extensions() {
+      this.#extensions ||= parseItems(this, 2, this.length - 2, Extension, parseExtension);
+      return this.#extensions
+   }
+}
+
 
 /**
  * https://datatracker.ietf.org/doc/html/rfc8446#section-4.3.1
  */
-export class EncryptedExtensions extends Constrained {
+/* export class EncryptedExtensions_0 extends Constrained {
    ext = new Set;
    static fromExtensions(...extensions) { return new EncryptedExtensions(...extensions) }
    static fromHandshake(array) {
@@ -30,7 +41,7 @@ export class EncryptedExtensions extends Constrained {
       const copy = Uint8Array.from(array)
       const lengthOf = Uint16.from(copy).value;
       if (lengthOf == 0) return new EncryptedExtensions
-      const extensions = parseItems(copy, 2, lengthOf, Extension);//_Extensions.from(copy.subarray());
+      const extensions = parseItems(copy, 2, lengthOf, Extension, parseExtension);//_Extensions.from(copy.subarray());
       return new EncryptedExtensions(...extensions)
    }
 
@@ -70,45 +81,6 @@ class _Extensions extends Constrained {
       this.extensions = extensions
    }
 }
+ */
 
-function parseExtension(extension) {
-   const { extension_type, extension_data } = extension;
-   switch (extension_type) {
-      case ExtensionType.SUPPORTED_GROUPS: {
-         extension.extension_data = NamedGroupList.from(extension_data); break;
-      }
-      case ExtensionType.KEY_SHARE: {
-         extension.extension_data = KeyShareClientHello.from(extension_data); break;
-      }
-      case ExtensionType.SUPPORTED_VERSIONS: {
-         extension.extension_data = SupportedVersions.fromClient_hello(extension_data); break;
-      }
-      case ExtensionType.SIGNATURE_ALGORITHMS: {
-         extension.extension_data = Supported_signature_algorithms.from(extension_data); break;
-      }
-      case ExtensionType.SERVER_NAME: {
-         extension.extension_data = extension_data.length ? ServerNameList.from(extension_data) : extension_data; break;
-      }
-      case ExtensionType.PSK_KEY_EXCHANGE_MODES: {
-         extension.extension_data = PskKeyExchangeModes.from(extension_data); break;
-      }
-      case ExtensionType.COOKIE: {
-         extension.extension_data = Cookie.from(extension_data); break;
-      }
-      case ExtensionType.RECORD_SIZE_LIMIT: {
-         extension.extension_data = RecordSizeLimit.from(extension_data); break;
-      }
-      case ExtensionType.EARLY_DATA: {
-         extension.extension_data = EarlyDataIndication.from(extension_data); break;
-      }
-      case ExtensionType.PADDING: {
-         extension.extension_data = Padding.from(extension_data); break;
-      }
-      case ExtensionType.PRE_SHARED_KEY: {
-         extension.extension_data = OfferedPsks.from(extension_data); break;
-      }
-      default:
-         break;
-   }
-}
 

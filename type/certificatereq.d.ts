@@ -1,86 +1,40 @@
-import { Constrained, Extension, Struct } from "../src/dep.ts";
+import { Extension } from "../src/dep.ts";
 
 /**
- * Represents a collection of TLS extensions.
- * Enforces constraints on the minimum and maximum length of the extensions.
+ * Represents a TLS 1.3 CertificateRequest structure.
+ * This structure is used during the handshake to request a client certificate.
  */
-declare class Extensions extends Constrained {
+export declare class CertificateRequest extends Uint8Array {
   /**
-   * Creates an `Extensions` instance from a Uint8Array.
-   * @param {Uint8Array} array - The array to parse.
-   * @returns {Extensions} - Parsed Extensions instance.
-   * @throws {RangeError} - If the length of the extension is less than 2 bytes.
+   * Sanitizes the input array to ensure it follows the expected format.
+   * @param {Uint8Array} array - The input data.
+   * @returns {[Uint8Array]} The sanitized output array.
+   * @throws {Error} If context length is greater than 255 or extension length is greater than 65535.
    */
-  static from(array: Uint8Array): Extensions;
+  static sanitize(array: Uint8Array): [Uint8Array];
 
   /**
-   * Constructs a new `Extensions` instance.
-   * @param {...Extension} extensions - List of extensions.
-   */
-  constructor(...extensions: Extension[]);
-
-  /** 
-   * List of extensions.
-   * @type {Extension[]}
-   */
-  extensions: Extension[];
-}
-
-/**
- * Represents the certificate request context in a TLS handshake.
- * Enforces constraints on the minimum and maximum length of the context.
- */
-declare class Certificate_request_context extends Constrained {
-  /**
-   * Creates a `Certificate_request_context` instance from a Uint8Array.
-   * @param {Uint8Array} array - The array to parse.
-   * @returns {Certificate_request_context} - Parsed Certificate_request_context instance.
-   */
-  static from(array: Uint8Array): Certificate_request_context;
-
-  /**
-   * Constructs a new `Certificate_request_context` instance.
-   * @param {Uint8Array} [opaque] - Optional opaque context data.
-   */
-  constructor(opaque?: Uint8Array);
-
-  /**
-   * Opaque context data.
-   * @type {Uint8Array | undefined}
-   */
-  opaque: Uint8Array | undefined;
-}
-
-/**
- * Represents a CertificateRequest structure as defined in RFC 8446.
- * Contains the certificate request context and associated extensions.
- * @see https://datatracker.ietf.org/doc/html/rfc8446#section-4.3.2
- */
-export class CertificateRequest extends Struct {
-  /**
-   * Creates a `CertificateRequest` instance from a Uint8Array.
-   * @param {Uint8Array} array - The array to parse.
-   * @returns {CertificateRequest} - Parsed CertificateRequest instance.
+   * Creates a new CertificateRequest instance from a Uint8Array.
+   * @param {Uint8Array} array - The input data.
+   * @returns {CertificateRequest} A new CertificateRequest instance.
    */
   static from(array: Uint8Array): CertificateRequest;
 
   /**
-   * Constructs a new `CertificateRequest` instance.
-   * @param {Uint8Array | undefined} certificate_request_context - The certificate request context.
-   * @param {...Extension} extension - List of extensions.
+   * Constructs a new CertificateRequest instance.
+   * @param {Uint8Array} args - The input data.
    */
-  constructor(certificate_request_context?: Uint8Array, ...extension: Extension[]);
+  constructor(...args: Uint8Array[]);
 
   /**
-   * Represents the extensions of a CertificateRequest.
-   * @type {typeof Extensions}
+   * Gets the request context.
+   * @returns {Uint8Array} The context used in the CertificateRequest.
    */
-  static extensions: typeof Extensions;
+  get context(): Uint8Array;
 
   /**
-   * Represents the certificate request context of a CertificateRequest.
-   * @type {typeof Certificate_request_context}
+   * Gets the set of extensions included in the CertificateRequest.
+   * @returns {Set<Extension>} A set of parsed Extension objects.
    */
-  static certificate_request_context: typeof Certificate_request_context;
+  get extensions(): Set<Extension>;
 }
-
