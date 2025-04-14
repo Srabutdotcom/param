@@ -1,7 +1,7 @@
 //@ts-self-types="../type/certificatereq.d.ts" 
 
-import { Uint16, Extension, parseItems } from "./dep.ts";
-import { parseExtension } from "./utils.js";
+import { Uint16, Extension } from "./dep.ts";
+import { parseExtension, parseItems } from "./utils.js";
 
 /* class Extensions extends Constrained {
    static from(array) {

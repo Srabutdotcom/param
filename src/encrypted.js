@@ -1,8 +1,8 @@
 // deno-lint-ignore-file no-slow-types
 // @ts-self-types="../type/encrypted.d.ts" 
-import { Uint16, parseItems } from "./dep.ts";
+import { Uint16 } from "./dep.ts";
 import { Extension } from "./dep.ts"
-import { parseExtension } from "./utils.js";
+import { parseExtension, parseItems } from "./utils.js";
 
 export class EncryptedExtensions extends Uint8Array {
    #extensions
