@@ -1,6 +1,7 @@
 # TLS 1.3 Parameter Structures (RFC 8446 - Section 4.3)
 
 This project provides JavaScript implementations for handling TLS 1.3 parameters as defined in [RFC 8446 Section 4.3](https://datatracker.ietf.org/doc/html/rfc8446#section-4.3). The code focuses on encoding, decoding, and managing the data structures involved in TLS 1.3, specifically for `CertificateRequest` and `EncryptedExtensions`.
+@version 0.2.8
 
 ## Features
 

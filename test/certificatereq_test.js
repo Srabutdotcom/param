@@ -1,4 +1,3 @@
-import { ExtensionType } from "@tls/enum";
 import { CertificateRequest } from "../src/certificatereq.js";
 import { assertEquals } from "jsr:@std/assert";
 

@@ -1,35 +1,52 @@
 import { Extension } from "../src/dep.ts";
 
 /**
- * Represents the EncryptedExtensions structure as defined in RFC 8446, Section 4.3.1.
- * Contains a set of extensions used during the TLS handshake.
+ * Represents the TLS `EncryptedExtensions` structure:
+ * ```
+ * struct {
+ *   Extension extensions<0..2^16-1>;
+ * } EncryptedExtensions;
+ * ```
  * @see https://datatracker.ietf.org/doc/html/rfc8446#section-4.3.1
+ * @version 0.2.8
  */
-export declare class EncryptedExtensions extends Uint8Array {
+export class EncryptedExtensions extends Uint8Array {
   /**
-   * Sanitizes the input array to ensure it follows the expected format.
-   * @param {Uint8Array} array - The input data.
-   * @returns {[Uint8Array]} The sanitized output array.
-   * @throws {Error} If the length exceeds 65535.
+   * Parses the input as an `EncryptedExtensions` instance from multiple extensions.
+   *
+   * @param {...Uint8Array} extensions - Serialized extensions to include.
+   * @returns {EncryptedExtensions}
    */
-  static sanitize(array: Uint8Array): [Uint8Array];
+  static fromExtensions(...extensions: Uint8Array[]): EncryptedExtensions;
 
   /**
-   * Creates a new EncryptedExtensions instance from a Uint8Array.
-   * @param {Uint8Array} array - The input data.
-   * @returns {EncryptedExtensions} A new EncryptedExtensions instance.
+   * Creates an `EncryptedExtensions` instance from a byte-like object.
+   *
+   * @param {Uint8Array | ArrayBuffer | number[]} array - Input array data.
+   * @returns {EncryptedExtensions}
    */
-  static from(array: Uint8Array): EncryptedExtensions;
+  static from(array: Uint8Array ): EncryptedExtensions;
 
   /**
-   * Constructs a new EncryptedExtensions instance.
-   * @param {Uint8Array} args - The input data.
+   * Constructs an EncryptedExtensions instance.
+   *
+   * @param {any[]} args - Arguments forwarded to `Uint8Array`, with validation.
+   * @throws {RangeError} If byte length exceeds 2^16 - 1.
    */
-  constructor(...args: Uint8Array[]);
+  constructor(...args: any[]);
 
   /**
-   * Gets the set of extensions included in the EncryptedExtensions.
-   * @returns {Set<Extension>} A set of parsed Extension objects.
+   * Lazily-parsed list of extensions.
+   *
+   * @returns {Extension[]} Parsed Extension objects.
    */
-  get extensions(): Set<Extension>;
+  get extensions(): Extension[];
 }
+
+/**
+ * Parses an extension and assigns a suitable parser class to `extension.parser`.
+ *
+ * @param {Extension} extension - Extension object with `.type` and `.data`.
+ */
+export function parseExtension(extension: Extension): void;
+

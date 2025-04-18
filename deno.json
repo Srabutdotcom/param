@@ -1,21 +1,35 @@
 {
   "name": "@tls/param",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "exports": "./src/mod.ts",
   "publish": {
-    "exclude": ["dist/"]
+    "exclude": [
+      "dist/"
+    ]
+  },
+  "tasks": {
+    "test": "deno test",
+    "lint": "deno lint"
   },
   "lint": {
-    "include": ["src/"],
-    "exclude": ["dist/", "src/encryptedexts.js"],
+    "include": [
+      "src/"
+    ],
+    "exclude": [
+      "dist/",
+      "src/encryptedexts.js"
+    ],
     "rules": {
-      "exclude": []
+      "exclude": [
+        "no-slow-types"
+      ]
     }
   },
   "imports": {
-    "@aicone/byte": "jsr:@aicone/byte@^0.7.9",
+    "@aicone/byte": "jsr:@aicone/byte@^0.8.6",
     "@std/assert": "jsr:@std/assert@^1.0.12",
-    "@tls/enum": "jsr:@tls/enum@^0.9.3",
-    "@tls/extension": "jsr:@tls/extension@^0.5.5"
+    "@tls/enum": "jsr:@tls/enum@^0.9.7",
+    "@tls/extension": "jsr:@tls/extension@^0.6.0",
+    "@tls/parser": "jsr:@tls/parser@^0.0.3"
   }
 }
